@@ -12,6 +12,7 @@
         android:layout_gravity="center"
         android:text="@string/convenience"
         android:textSize="30dp"
+        android:textColor="@color/black"
         android:textStyle="bold" />
 
 </LinearLayout>
