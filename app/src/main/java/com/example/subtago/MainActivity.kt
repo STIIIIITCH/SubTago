@@ -11,6 +11,7 @@ lateinit var btn_lift: Button
 lateinit var btn_convenience: Button
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -40,6 +41,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(convenienceIntent)  // 화면 전환하기
         }
     }
+    
+
 }
 
 

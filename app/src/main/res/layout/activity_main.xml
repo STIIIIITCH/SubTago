@@ -33,6 +33,7 @@
                 android:layout_height="60dp"
                 android:backgroundTint="@color/green"
                 android:layout_margin="2dp"
+                android:textSize="15sp"
                 android:text="@string/subway" />
             <Button
                 android:id="@+id/transfer"
@@ -40,6 +41,7 @@
                 android:layout_height="60dp"
                 android:backgroundTint="@color/green"
                 android:layout_margin="2dp"
+                android:textSize="15sp"
                 android:text="@string/transfer" />
             <Button
                 android:id="@+id/lift"
@@ -47,6 +49,7 @@
                 android:layout_height="60dp"
                 android:backgroundTint="@color/green"
                 android:layout_margin="2dp"
+                android:textSize="15sp"
                 android:text="@string/lift" />
             <Button
                 android:id="@+id/convenience"
@@ -54,6 +57,7 @@
                 android:layout_height="60dp"
                 android:backgroundTint="@color/green"
                 android:layout_margin="2dp"
+                android:textSize="15sp"
                 android:text="@string/convenience" />
         </LinearLayout>
     </RelativeLayout>
