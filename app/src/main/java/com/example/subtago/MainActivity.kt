@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         val subwayIntent = Intent(this, SubwayActivity::class.java) // 인텐트를 생성
         btn_subway.setOnClickListener { // 버튼 클릭시 할 행동
             startActivity(subwayIntent)  // 화면 전환하기
+
         }
 
         val transferIntent = Intent(this, TransferActivity::class.java) // 인텐트를 생성
@@ -41,7 +42,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(convenienceIntent)  // 화면 전환하기
         }
     }
-    
 
 }
 
