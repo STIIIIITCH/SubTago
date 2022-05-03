@@ -43,6 +43,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // 뒤로가기 버튼 클릭 시 종료
+    override fun onBackPressed() {
+        finish()
+    }
+
 }
 
 
