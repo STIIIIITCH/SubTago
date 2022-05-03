@@ -5,6 +5,13 @@ plugins {
     id 'org.jetbrains.kotlin.android' version '1.6.21' apply false
 }
 
+// retrofit 환경설정
+dependencies {
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1' // Logger Library
+    implementation 'com.squareup.retrofit2.converter-gson:2.9.0' // Json을 받아와 자동으로 객체로 Convert
+    implementation
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
