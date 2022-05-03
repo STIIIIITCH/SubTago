@@ -32,6 +32,10 @@ android {
 }
 
 dependencies {
+    // retrofit 환경설정
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1' // Logger Library
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0' // Json을 받아와 자동으로 객체로 Convert
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0' // Retrofit Library
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'

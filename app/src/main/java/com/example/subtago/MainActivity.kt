@@ -48,6 +48,13 @@ class MainActivity : AppCompatActivity() {
         finish()
     }
 
+//    // retrofit URL 설정
+//    val regionRetrofit = Retrofit.Builder()
+//        .baseUrl("http://openapi.kric.go.kr")
+//        .addConverterFactory(GsonConverterFactory.create())
+//        .build()
+//    var regionServer: RetrofitService? = regionRetrofit.create(RetrofitService::class.java)
+
 }
 
 
