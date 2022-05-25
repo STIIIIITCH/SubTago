@@ -56,5 +56,4 @@ android {
 
 dependencies {
     implementation files('libs\\libDaumMapAndroid.jar')
-    implementation files('libs\\libDaumMapAndroid.jar')
 }
