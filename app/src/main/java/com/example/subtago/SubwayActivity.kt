@@ -17,7 +17,7 @@ import net.daum.mf.map.api.MapView
 
 
 class SubwayActivity : AppCompatActivity() {
-    private lateinit var binding : Subway1Binding
+//    private lateinit var binding : Subway1Binding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,41 +48,41 @@ class SubwayActivity : AppCompatActivity() {
             )
         }
 
-//        val mapView = MapView(this)
-//        val mapViewContainer = findViewById<View>(R.id.mapView) as ViewGroup
-//        mapViewContainer.addView(mapView)
-
-        binding = Subway1Binding.inflate(layoutInflater)
-//        val view = binding.root
-//        setContentView(view)
-        setContentView(binding.root)
-
-        // 위치추적 버튼
-        binding.btnStart.setOnClickListener {
-            startTracking()
-        }
-
-        // 추적중지 버튼
-        binding.btnStop.setOnClickListener {
-            stopTracking()
-        }
+        val mapView = MapView(this)
+        val mapViewContainer = findViewById<View>(R.id.mapView) as ViewGroup
+        mapViewContainer.addView(mapView)
+//
+////        binding = Subway1Binding.inflate(layoutInflater)
+////        val view = binding.root
+////        setContentView(view)
+//        setContentView(binding.root)
+//
+//        // 위치추적 버튼
+//        binding.btnStart.setOnClickListener {
+//            startTracking()
+//        }
+//
+//        // 추적중지 버튼
+//        binding.btnStop.setOnClickListener {
+//            stopTracking()
+//        }
 
         btn_subway.setOnClickListener {
             finish() // 액티비티 종료
         }
     }
+
     override fun onBackPressed() {
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
 
-    // 위치추적 시작
-    private fun startTracking() {
-        binding.mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
-    }
-
-    // 위치추적 중지
-    private fun stopTracking() {
-        binding.mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOff
-    }
+//    // 위치추적 시작
+//    private fun startTracking() {
+//        binding.mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
+//    }
+//
+//    // 위치추적 중지
+//    private fun stopTracking() {
+//        binding.mapView.currentLocationTrackingMode = MapView.CurrentLoca
 }
