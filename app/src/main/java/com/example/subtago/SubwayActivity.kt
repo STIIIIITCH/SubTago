@@ -9,6 +9,8 @@ import android.location.LocationManager
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -18,6 +20,7 @@ import net.daum.mf.map.api.MapView
 
 
 class SubwayActivity : AppCompatActivity() {
+    val mapView: MapView? = null
     var provider: String? = null
     var longitude = 0.0
     var latitude = 0.0
@@ -81,10 +84,19 @@ class SubwayActivity : AppCompatActivity() {
         marker.setCustomImageAnchor(0.5f, 1.0f)
 
 
+//        mapView.setMapViewEventListener(this);
+////        mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading);
+        val btn = findViewById<Button>(R.id.btn_start)
+        btn.setOnClickListener(myLocation)
 
         btn_subway.setOnClickListener {
             finish() // 액티비티 종료
         }
+    }
+
+    var myLocation = View.OnClickListener {
+        Toast.makeText(this, "불러옵니다.", Toast.LENGTH_SHORT).show()
+        mapView?.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(latitude, longitude), true)
     }
 
     override fun onBackPressed() {
