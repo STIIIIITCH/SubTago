@@ -1,9 +1,10 @@
 package com.example.subtago
 
 import android.Manifest
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Location
+import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
 import android.view.View
@@ -11,13 +12,16 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.example.subtago.databinding.ActivityMainBinding
-import com.example.subtago.databinding.Subway1Binding
+import net.daum.mf.map.api.MapPOIItem
+import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
 
 
 class SubwayActivity : AppCompatActivity() {
-//    private lateinit var binding : Subway1Binding
+    var provider: String? = null
+    var longitude = 0.0
+    var latitude = 0.0
+    var altitude = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +40,7 @@ class SubwayActivity : AppCompatActivity() {
             )
         }
 
-        val permissionCheck2 =
+        val  permissionCheck2 =
             ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_BACKGROUND_LOCATION)
 
         if (permissionCheck == PackageManager.PERMISSION_DENIED) { //백그라운드 위치 권한 확인
@@ -51,21 +55,32 @@ class SubwayActivity : AppCompatActivity() {
         val mapView = MapView(this)
         val mapViewContainer = findViewById<View>(R.id.mapView) as ViewGroup
         mapViewContainer.addView(mapView)
-//
-////        binding = Subway1Binding.inflate(layoutInflater)
-////        val view = binding.root
-////        setContentView(view)
-//        setContentView(binding.root)
-//
-//        // 위치추적 버튼
-//        binding.btnStart.setOnClickListener {
-//            startTracking()
-//        }
-//
-//        // 추적중지 버튼
-//        binding.btnStop.setOnClickListener {
-//            stopTracking()
-//        }
+
+        val lm = getSystemService(LOCATION_SERVICE) as LocationManager
+        val location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+
+        // 위치정보를 원하는 시간, 거리마다 갱신
+
+        // 위치정보를 원하는 시간, 거리마다 갱신
+        lm.requestLocationUpdates(
+            LocationManager.GPS_PROVIDER,
+            1000, 1f,
+            gpsLocationListener
+        )
+        lm.requestLocationUpdates(
+            LocationManager.NETWORK_PROVIDER,
+            1000, 1f,
+            gpsLocationListener
+        )
+
+        val marker = MapPOIItem()
+        val nowPosition = MapPoint.mapPointWithGeoCoord(latitude, longitude)
+        marker.customImageResourceId = R.drawable.pin
+        marker.itemName = "현위치"
+        marker.mapPoint = nowPosition
+        marker.setCustomImageAnchor(0.5f, 1.0f)
+
+
 
         btn_subway.setOnClickListener {
             finish() // 액티비티 종료
@@ -77,12 +92,16 @@ class SubwayActivity : AppCompatActivity() {
         finish()
     }
 
-//    // 위치추적 시작
-//    private fun startTracking() {
-//        binding.mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
-//    }
-//
-//    // 위치추적 중지
-//    private fun stopTracking() {
-//        binding.mapView.currentLocationTrackingMode = MapView.CurrentLoca
+    val gpsLocationListener: LocationListener = object : LocationListener {
+        override fun onLocationChanged(location: Location) {
+            provider = location.provider
+            longitude = location.longitude
+            latitude = location.latitude
+            altitude = location.altitude
+        }
+
+        override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {}
+        override fun onProviderEnabled(provider: String) {}
+        override fun onProviderDisabled(provider: String) {}
+    }
 }
