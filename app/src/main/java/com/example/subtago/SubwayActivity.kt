@@ -86,7 +86,7 @@ class SubwayActivity : AppCompatActivity() {
 
 //        mapView.setMapViewEventListener(this);
 ////        mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading);
-        val btn = findViewById<Button>(R.id.btn_start)
+        val btn = findViewById<Button>(R.id.btn_now)
         btn.setOnClickListener(myLocation)
 
         btn_subway.setOnClickListener {
