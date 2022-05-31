@@ -43,7 +43,7 @@ class SubwayActivity : AppCompatActivity() {
         val  permissionCheck2 =
             ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_BACKGROUND_LOCATION)
 
-        if (permissionCheck == PackageManager.PERMISSION_DENIED) { //백그라운드 위치 권한 확인
+        if (permissionCheck2 == PackageManager.PERMISSION_DENIED) { //백그라운드 위치 권한 확인
             //위치 권한 요청
             ActivityCompat.requestPermissions(
                 this,
